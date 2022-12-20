@@ -11,7 +11,7 @@
 		<button pButton pRipple type="button" label="Create Office Bearers" class="p-button-raised" (click)="toggle1(createdistrictadmin)" style="background-color:#fa2837"></button>
 		<button pButton pRipple type="button" label="Self-Registration" class="p-button-raised" (click)="toggle2(selfregistration)" style="background-color:#fa2837"></button>
 		<button pButton pRipple type="button" label="Sign-in" class="p-button-raised" style="background-color:#fa2837" [routerLink]="['/']"></button> -->
-		
+
 			<!-- <p app-menuitem class="text-xl font-bold" (click)="toggledashboard(dashboard)" >SUPER ADMIN - DASHBOARD</p>
 			<p class="text-xl font-bold" (click)="toggle(districtadmin)">CREATE DISTRICT ADMIN</p>
 			<p class="text-xl font-bold" (click)="toggle1(createdistrictadmin)">CREATE OFFICE BEARERS</p> -->
@@ -26,9 +26,9 @@
 			<div style="padding-left:32px;margin-left: 2px;">
 			<button pButton pRipple  class="p-button-text text-xl font-bold" style="color:red;padding-left: 28px;" [routerLink]="['/']">SIGN OUT</button>
 			</div>
-			
+
 			<!-- <p-button  label="SIGN OUT"  styleClass="p-button-link text-red-500 text-xl"></p-button> -->
-		
+
 	</div>
 </div>
 
@@ -45,14 +45,14 @@
 			<div class="card">
 				<div>
 					<div style="padding-left: 92%;">
-						<div *ngIf="districtadmin==true">
+						<div *ngIf="districtadmin===true">
 							<button  pButton type="button" label="Add" (click)="visibleSidebar5 = true" icon="pi pi-plus" class="p-button-primary"></button>
 						</div>
-						<div *ngIf="createdistrictadmin==true">
+						<div *ngIf="createdistrictadmin===true">
 							<button  pButton type="button" label="Add" (click)="visibleSidebar4 = true" icon="pi pi-plus" class="p-button-primary"></button>
-						</div>	
+						</div>
 					</div>
-					
+
 								<p-sidebar [(visible)]="visibleSidebar5" [fullScreen]="true" [baseZIndex]="10000">
 									<h3 style="font-weight:normal">Create District Admin</h3>
 									<div  class="col-12 md:col-6" style="padding-left:380px">
@@ -78,7 +78,7 @@
 											<div class="field grid">
 												<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">District</label>
 												<div class="col-12 md:col-10">
-													<p-dropdown [options]="cities" [(ngModel)]="selectedDrop" placeholder="Select a City" [showClear]="true"></p-dropdown>	
+													<p-dropdown [options]="cities" [(ngModel)]="selectedDrop" placeholder="Select a City" [showClear]="true"></p-dropdown>
 												</div>
 											</div>
 											<div class="field grid">
@@ -99,10 +99,10 @@
 													<input pInputText id="email3" type="text" />
 												</div>
 											</div>
-								
+
 										<div class="field grid">
 												<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Status</label>
-											
+
 												<div class="col-12 md:col-4">
 														<div class="field-radiobutton" style="padding-top: 15px;">
 															<p-radioButton name="city" value="active" [(ngModel)]="valRadio"
@@ -118,7 +118,7 @@
 															<button pButton pRipple type="button" label="Submit"></button>
 														</div>
 													</div>
-													
+
 												</div>
 											</div>
 										</div>
@@ -148,7 +148,7 @@
 													<div class="field grid">
 														<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Party Designation</label>
 														<div class="col-12 md:col-10">
-															<p-dropdown [options]="cities" [(ngModel)]="selectedDrop" placeholder="Select designation" [showClear]="true"></p-dropdown>	
+															<p-dropdown [options]="cities" [(ngModel)]="selectedDrop" placeholder="Select designation" [showClear]="true"></p-dropdown>
 														</div>
 													</div>
 													<div class="field grid">
@@ -163,7 +163,7 @@
 															<input pInputText id="email3" type="text" />
 														</div>
 													</div>
-									
+
 													<div class="field grid">
 														<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Status</label>
 														<div class="col-12 md:col-4">
@@ -191,10 +191,10 @@
 									</div>
 
 								</p-sidebar>
-				</div>	
+				</div>
 						<div>
-							<h5 *ngIf="districtadmin == true">DISTRICT ADMIN INFORMATION</h5>
-							<h5 *ngIf="createdistrictadmin == true">OFFICE BEARER INFORMATION</h5>
+							<h5 *ngIf="districtadmin === true">DISTRICT ADMIN INFORMATION</h5>
+							<h5 *ngIf="createdistrictadmin === true">OFFICE BEARER INFORMATION</h5>
 							<p-table [value]="customers1" rowGroupMode="subheader" groupRowsBy="representative.name" sortField="representative.name" sortMode="single"  responsiveLayout="scroll" [scrollable]="true" scrollHeight="400px">
 								<ng-template pTemplate="header">
 									<tr>
@@ -244,7 +244,7 @@
 								</ng-template>
 							</p-table>
 
-						</div>	
+						</div>
 				</div>
 			</div>
 		</div>
@@ -265,9 +265,9 @@
 					<p-button label="Add" icon="pi pi-plus" ></p-button>
 				</div>	 -->
 				<h5 style="padding-top:2%">OFFICE BEARER CHANGE</h5>
-						
+
 					<div style="padding-top:3%">
-						<p-table [value]="customers" rowGroupMode="subheader" groupRowsBy="representative.name" sortField="representative.name" sortMode="single"  responsiveLayout="scroll" 
+						<p-table [value]="customers" rowGroupMode="subheader" groupRowsBy="representative.name" sortField="representative.name" sortMode="single"  responsiveLayout="scroll"
 						[scrollable]="true" scrollHeight="400px" >
 							<ng-template pTemplate="header">
 								<tr>
@@ -305,7 +305,7 @@
 										{{customer.date}}
 									</td>
 									<td style="min-width: 20px;">
-										
+
 									</td>
 									<td style="min-width: 20px;">
 										<button pButton class="p-button-success" icon="pi pi-check"></button>
@@ -316,14 +316,14 @@
 								</tr>
 							</ng-template>
 						</p-table>
-	
-					</div>	
+
+					</div>
 			</div>
 		</div>
 	</div>
-	
-	
-	
+
+
+
 
 
 
@@ -352,7 +352,7 @@
 			<div class="field grid">
 				<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">District</label>
 				<div class="col-12 md:col-10">
-					<p-dropdown [options]="cities" [(ngModel)]="selectedDrop" placeholder="Select a City" [showClear]="true"></p-dropdown>	
+					<p-dropdown [options]="cities" [(ngModel)]="selectedDrop" placeholder="Select a City" [showClear]="true"></p-dropdown>
 				</div>
 			</div>
 			<div class="field grid">
@@ -376,7 +376,7 @@
 
            <div class="field grid">
 				<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Status</label>
-			
+
 				<div class="col-12 md:col-4">
 						<div class="field-radiobutton" style="padding-top: 15px;">
 							<p-radioButton name="city" value="active" [(ngModel)]="valRadio"
@@ -392,11 +392,11 @@
 							<button pButton pRipple type="button" label="Submit"></button>
 						</div>
                     </div>
-					
+
                 </div>
 			</div>
-			
-			
+
+
 		</div>
 	</div> -->
 
@@ -426,7 +426,7 @@
 				<div class="field grid">
 					<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Party Designation</label>
 					<div class="col-12 md:col-10">
-						<p-dropdown [options]="cities" [(ngModel)]="selectedDrop" placeholder="Select designation" [showClear]="true"></p-dropdown>	
+						<p-dropdown [options]="cities" [(ngModel)]="selectedDrop" placeholder="Select designation" [showClear]="true"></p-dropdown>
 					</div>
 				</div>
 				<div class="field grid">
@@ -501,7 +501,7 @@
 				<input pInputText id="email3" type="text" />
 			</div>
 		</div>
-		
+
 		<div class="field grid">
 			<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Mobile</label>
 			<div class="col-12 md:col-10">
@@ -651,7 +651,7 @@
                     </li>
                 </ul>
             </div>
-			
+
 
 
 </div>
@@ -697,7 +697,7 @@
 					<label htmlFor="city">City</label>
 					<input pInputText id="city" type="text" />
 				</div>
-				
+
 				<div class="field col-12 md:col-3">
 					<label htmlFor="state">State</label>
 					<p-dropdown [options]="dropdownItems" optionLabel="name" [(ngModel)]="selectedState"></p-dropdown>
@@ -730,7 +730,7 @@
 				<input pInputText id="age1" type="text" />
 			</div>
 		</div>
-		
+
 		<div class="card p-fluid">
 			<h5>Vertical Grid</h5>
 			<div class="p-formgrid grid">
@@ -788,7 +788,7 @@
 		</div>
 	</div> -->
 
-	
+
 
 
 
