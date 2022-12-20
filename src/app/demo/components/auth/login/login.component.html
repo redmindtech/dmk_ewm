@@ -9,8 +9,8 @@
 
                     <div class="text-900 text-3xl font-medium mb-3">Welcome to DMK Engineer Wing Portal</div>
                     <div>
-                        <h2 class="text-xl" (click)="user('admin')">Sign in as</h2>
-                        <p-selectButton [options]="paymentOptions"  [(ngModel)]="user" optionLabel="name"></p-selectButton>
+                        <h2 class="text-xl" (click)="user('admin')">Sign in to Continue</h2>
+                        <!-- <p-selectButton [options]="paymentOptions"  [(ngModel)]="user" optionLabel="name"></p-selectButton> -->
                     </div>
 
                  </div>
@@ -19,7 +19,7 @@
 
                                 <div class="field p-fluid">
                                     <h5 for="email">Email</h5>
-                                    <input type="text" id="email" name="email" formControlName="email" autocomplete="off" placeholder="Email address" pInputText class="w-full md:w-30rem mb-5" style="padding:1rem">
+                                    <input type="text" id="email" #input name="email" (keyup)="conlog(input.value)"  formControlName="email" autocomplete="off" placeholder="Email address" pInputText class="w-full md:w-30rem mb-5" style="padding:1rem">
                                     <!-- <small *ngIf="userForm.value.email.valid">Enter your username to reset your password.</small > -->
                                 </div>
 
@@ -35,11 +35,24 @@
                                         <a class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)">Forgot password?</a>
                                     </div>
                                 </div>
-                                <button *ngIf="user.name==='Super Admin';else elseBlock" pButton pRipple label="Sign In" class="w-full p-3 text-xl" [routerLink]="['/uikit/formlayout']"></button>
-                                    <ng-template #elseBlock>
-                                        <button pButton pRipple label="Sign In"  class="w-full p-3 text-xl" [routerLink]="['/pages/empty']"></button>
-                                    </ng-template>
+                                 
+                                   <!-- <button *ngIf="usertype=='';else elseBlock" pButton pRipple label="Sign In" class="w-full p-3 text-xl" ></button> -->
 
+                                   <button *ngIf="usertype=='';else elseBlock" pButton pRipple label="Sign In" class="w-full p-3 text-xl" ></button>
+                                   
+                                    <ng-template #elseBlock>
+                                            <button *ngIf="usertype=='admin'" pButton pRipple label="Sign In"  class="w-full p-3 text-xl" [routerLink]="['/pages/empty']"></button>
+                                            <button *ngIf="usertype=='superadmin'" pButton pRipple label="Sign In"  class="w-full p-3 text-xl" [routerLink]="['/uikit/formlayout']" ></button>
+                                        
+                                        <ng-template #elseBlock>
+                                            <button *ngIf="usertype !='';else elseBlock" pButton pRipple label="Sign In" class="w-full p-3 text-xl" ></button>
+                                        </ng-template>
+                                    </ng-template>
+                                    <!-- <ng-template #thenBlock>
+                                        <button *ngIf="usertype=='superadmin'" pButton pRipple label="Sign In"  class="w-full p-3 text-xl" [routerLink]="['/uikit/formlayout']" ></button>
+                                    </ng-template> -->
+                                    
+                                 
                         </div>
                         <div style="margin-left:19%;">
                             <p-button label="Engineer Self Registration"  [routerLink]="['uikit/media']" styleClass="p-button-link text-2xl"  ></p-button>

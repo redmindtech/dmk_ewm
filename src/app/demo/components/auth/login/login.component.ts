@@ -19,7 +19,7 @@ import { EncrDecrServiceService } from 'src/app/service/encr-decr-service.servic
 })
 export class LoginComponent implements OnInit{
     userForm!: FormGroup;
-
+    usertype:string='';
     
     
 
@@ -36,12 +36,16 @@ export class LoginComponent implements OnInit{
         { name: 'Admin', value: 1 },
         { name: 'Super Admin', value: 2 }]
     
-
+    
     
     con(){
         console.log(this.userForm.value);
     }
-    
+    conlog(a:any){
+        this.usertype =a;
+        console.log(a);
+    }
+
     constructor(public layoutService: LayoutService,
         private EncrDecr:EncrDecrServiceService) { }
     ngOnInit(){

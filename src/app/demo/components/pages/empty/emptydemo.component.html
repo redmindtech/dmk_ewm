@@ -11,8 +11,8 @@
 	<img src="assets/demo/images/dmklogo.png" alt="..." width="100" >
 	<h1 style="font-size:45px;text-align:center;padding-left: 28%;color:rgb(255, 255, 255)"> DMK Engineer Wing </h1>
 </div>
-<div style="background-image: linear-gradient(to right, #0e24b1, #0042c6, #005cd8, #0075e8, hsl(208, 93%, 52%));">
-<div class="border-red-800 layout-sidebar " style="margin-top: 20px;padding-right: 50px;background-image: linear-gradient(#0e24b1, white)">
+<div >
+<div class="border-red-800 layout-sidebar " style="margin-top: 20px;padding-right: 50px;background-image: linear-gradient(#0e24b1, #0e24b1)">
 	<!-- <div class="flex flex-column gap-4 justify-content: center;" style="padding-top:40px;padding-left:20px;color:rgb(255, 255, 255)"> -->
 	<div class="flex flex-column gap-4 justify-content:start;" style="padding-top:40px;color:rgb(255, 255, 255)">
 
@@ -39,12 +39,137 @@
 	</div>
 </div>
 
-<div *ngIf="createdistrictadmin"  class="card" style="padding-left:50%;padding-right:3%;">
+<div *ngIf="createdistrictadmin"  class="card" style="margin-left:23%;margin-right:2%;">
 	<div>
-		<h5 *ngIf="createdistrictadmin === true" style="font-size:25px;"><b> DISTRICT ADMIN INFORMATION </b></h5>
-		<div *ngIf="createdistrictadmin===true" style="padding-left: 92%;padding-bottom:10px;">
+		<h5 *ngIf="createdistrictadmin === true" style="font-size:25px;"><b> OFFICE BEARER INFORMATION </b></h5>
+		<div *ngIf="createdistrictadmin===true" style="padding-left: 92%;padding-bottom:2%;">
 			<button  pButton type="button" label="Add" (click)="visibleSidebar5 = true" icon="pi pi-plus" class="p-button-primary"></button>
 		</div>
+	</div>
+	<p-sidebar [(visible)]="visibleSidebar5" styleclass="bg-primary-600" [fullScreen]="true" [baseZIndex]="10000" >
+	<div style="background-color:#0e24b1;">
+		<div class="col-12 md:col-6" style="padding-left:380px;">
+			<div class="card p-fluid" style="width:900px">
+				<h5 style="font-size:35px">Create Office Bearers </h5>
+					<div class="field grid">
+					<label htmlFor="name3" class="col-12 mb-2 md:col-2 md:mb-0">First Name/முதல் பெயர்</label>
+						<div class="col-12 md:col-10">
+							<input pInputText id="name3" type="text" />
+						</div>
+					</div>
+				<div class="field grid">
+					<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Last Name/குடும்ப பெயர்</label>
+					<div class="col-12 md:col-10">
+						<input pInputText id="email3" type="text" />
+					</div>
+				</div>
+				<div class="field grid">
+					<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Designation/பதவி</label>
+					<div class="col-12 md:col-10">
+						<input pInputText id="email3" type="text" />
+					</div>
+				</div>
+				<div class="field grid">
+					<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Party Designation/கட்சி பதவி</label>
+					<div class="col-12 md:col-10">
+						<p-dropdown [options]="cities" [(ngModel)]="selectedDrop" placeholder="Select designation" [showClear]="true"></p-dropdown>
+					</div>
+				</div>
+				<div class="field grid">
+					<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Mobile/கைபேசி</label>
+					<div class="col-12 md:col-10">
+						<input pInputText id="email3" type="text" />
+					</div>
+				</div>
+				<div class="field grid">
+					<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Email/மின்னஞ்சல்</label>
+					<div class="col-12 md:col-10">
+						<input pInputText id="email3" type="text" />
+					</div>
+				</div>
+
+				<div class="field grid">
+					<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Status/நிலை</label>
+				       <div class="col-12 md:col-4">
+								<div class="field-radiobutton" style="padding-top: 15px;">
+									<p-radioButton name="city" value="active" [(ngModel)]="valRadio"
+												id="city2"></p-radioButton>
+									<label for="city2">Active/செயலில்</label>
+								</div>
+								<div class="field-radiobutton">
+									<p-radioButton name="city" value="Inactive" [(ngModel)]="valRadio"
+												id="city2"></p-radioButton>
+									<label for="city2">Inactive/செயலற்றது</label>
+								</div>
+								<div class="field-radiobutton">
+									<p-radioButton name="city" value="Awaiting approval" [(ngModel)]="valRadio"
+												id="city2"></p-radioButton>
+									<label for="city2">Awaiting approval/ஒப்புதலுக்காக காத்திருக்கிறது</label>
+								</div>
+                                <div>
+                                    <button pButton pRipple label="Submit"></button>
+                                </div>
+						</div>
+				</div>
+			</div>
+		</div>
+</div>
+
+
+	</p-sidebar>
+<div>
+		<!-- <h5 *ngIf="createdistrictadmin == true">OFFICE BEARER INFORMATION</h5> -->
+		<div *ngIf="districtadmin === true || createdistrictadmin === true">
+				<p-table [value]="customers1" rowGroupMode="subheader" groupRowsBy="representative.name" sortField="representative.name" sortMode="single"  responsiveLayout="scroll" [scrollable]="true" scrollHeight="400px">
+					<ng-template pTemplate="header">
+						<tr>
+							<th>Name</th>
+							<th>Designation</th>
+							<th>District</th>
+							<th>Status</th>
+							<th>Email</th>
+							<th>Show</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
+					</ng-template>
+					<ng-template pTemplate="body" let-customer let-rowIndex="rowIndex">
+						<!-- <tr pRowGroupHeader *ngIf="rowGroupMetadata[customer.representative.name].index === rowIndex">
+							<td colspan="5" style="min-width: 200px;">
+								<img [alt]="customer.representative.name" src="assets/demo/images/avatar/{{customer.representative.image}}" width="32" style="vertical-align: middle" />
+								<span class="font-bold ml-2">{{customer.representative.name}}</span>
+							</td>
+						</tr> -->
+						<tr>
+							<td style="min-width: 20px;">
+								{{customer.name}}
+							</td>
+							<td style="min-width: 20px;">
+								<span >{{customer.country}}</span>
+							</td>
+							<td style="min-width: 20px;">
+								{{customer.company}}
+							</td>
+							<td style="min-width: 20px;">
+								<span>{{customer.status}}</span>
+							</td>
+							<td style="min-width: 20px;">
+								{{customer.date}}
+							</td>
+							<td style="min-width: 20px;">
+								<button pButton class="p-button-success" icon="pi pi-eye"></button>
+							</td>
+							<td style="min-width: 20px;">
+								<button pButton icon="pi pi-user-edit"></button>
+							</td>
+							<td style="min-width: 20px;">
+								<button pButton icon="pi pi-times" class="p-button-danger"></button>
+							</td>
+						</tr>
+					</ng-template>
+				</p-table>
+			</div>
+
 	</div>
 
 </div>
@@ -111,71 +236,7 @@
 
 
 
-<div *ngIf="createdistrictadmin" class="col-12 md:col-6" style="padding-left:380px">
-			<div class="card p-fluid" style="width:900px">
-				<h5>Create Office Bearers </h5>
-					<div class="field grid">
-					<label htmlFor="name3" class="col-12 mb-2 md:col-2 md:mb-0">First Name/முதல் பெயர்</label>
-						<div class="col-12 md:col-10">
-							<input pInputText id="name3" type="text" />
-						</div>
-					</div>
-				<div class="field grid">
-					<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Last Name/கடைசி பெயர்</label>
-					<div class="col-12 md:col-10">
-						<input pInputText id="email3" type="text" />
-					</div>
-				</div>
-				<div class="field grid">
-					<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Designation/பதவி</label>
-					<div class="col-12 md:col-10">
-						<input pInputText id="email3" type="text" />
-					</div>
-				</div>
-				<div class="field grid">
-					<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Party Designation/கட்சி பதவி</label>
-					<div class="col-12 md:col-10">
-						<p-dropdown [options]="cities" [(ngModel)]="selectedDrop" placeholder="Select designation" [showClear]="true"></p-dropdown>
-					</div>
-				</div>
-				<div class="field grid">
-					<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Mobile/கைபேசி</label>
-					<div class="col-12 md:col-10">
-						<input pInputText id="email3" type="text" />
-					</div>
-				</div>
-				<div class="field grid">
-					<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Email/மின்னஞ்சல்</label>
-					<div class="col-12 md:col-10">
-						<input pInputText id="email3" type="text" />
-					</div>
-				</div>
 
-				<div class="field grid">
-					<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Status/நிலை</label>
-				       <div class="col-12 md:col-4">
-								<div class="field-radiobutton" style="padding-top: 15px;">
-									<p-radioButton name="city" value="active" [(ngModel)]="valRadio"
-												id="city2"></p-radioButton>
-									<label for="city2">Active/செயலில்</label>
-								</div>
-								<div class="field-radiobutton">
-									<p-radioButton name="city" value="Inactive" [(ngModel)]="valRadio"
-												id="city2"></p-radioButton>
-									<label for="city2">Inactive/செயலற்றது</label>
-								</div>
-								<div class="field-radiobutton">
-									<p-radioButton name="city" value="Awaiting approval" [(ngModel)]="valRadio"
-												id="city2"></p-radioButton>
-									<label for="city2">Awaiting approval/ஒப்புதலுக்காக காத்திருக்கிறது</label>
-								</div>
-                                <div>
-                                    <button pButton pRipple label="Submit"></button>
-                                </div>
-						</div>
-				</div>
-			</div>
-</div>
 
 <!-- <div *ngIf="selfregistration" class="col-12 md:col-6" style="padding-left:380px">
 	<div class="card p-fluid" style="width:900px">
