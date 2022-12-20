@@ -1,10 +1,11 @@
-<div class="layout-topbar " style="height:100px;background-image: linear-gradient(#e7e155, white);">
+<div class="layout-topbar " style="height: 100px;background-image: linear-gradient(to right, #0e24b1, #0042c6, #005cd8, #0075e8, hsl(208, 93%, 52%));">
 	<img src="assets/demo/images/dmklogo.png" alt="..." width="100" >
-	<h1 style="font-size:45px;text-align:center;padding-left: 28%;"> DMK Engineer Wing </h1>
+	<h1 style="font-size:45px;text-align:center;padding-left: 28%;color:rgb(255, 255, 255);"> DMK Engineer Wing </h1>
 </div>
 
-<div class="border-red-800 layout-sidebar " style="margin-top:10px;padding-right: 50px;background-image: linear-gradient(#e7e155, white)">
-	<div class="flex flex-column gap-4 justify-content:start;" style="padding-top:40px;color:red">
+<div class="border-red-800 layout-sidebar "  style="margin-top: 20px;padding-right: 50px;background-image: linear-gradient(#0e24b1, #0e24b1)">
+    <div style="background-image: linear-gradient(to right, #0e24b1, #0042c6, #005cd8, #0075e8, hsl(208, 93%, 52%));"></div>
+	<div class="flex flex-column gap-4 justify-content:start;" style="padding-top:40px;color:rgb(255, 255, 255)">
 		<!-- <button pButton pRipple type="button"  label="Home" class="p-button-raised" style="background-color:#fa2837" (click)="toggle3(home)"></button>
 		<button pButton pRipple type="button" label="Dashboard" class="p-button-raised" style="background-color:#fa2837"></button>
 		<button pButton pRipple type="button" label="District admin" class="p-button-raised" (click)="toggle(districtadmin)" style="background-color:#fa2837"></button>
@@ -20,12 +21,12 @@
 			<!-- <p class="text-xl  font-bold"  (click)="toggle3(home)" >OFFICE BEARER CHANGE</p>
 			<p class="text-xl font-bold" [routerLink]="['/']" >SIGN OUT</p> -->
 
-			<button pButton pRipple label="DASHBOARD"  class="p-button-text text-xl font-bold" style="color:red" (click)="toggledashboard(dashboard)"></button>
-			<button pButton pRipple  class="p-button-text text-xl font-bold" style="color:red" (click)="toggle(districtadmin)">CREATE DISTRICT ADMIN</button>
+			<button pButton pRipple label="DASHBOARD"  class="p-button-text text-xl font-bold" style="color:rgb(255, 255, 255)" (click)="toggledashboard(dashboard)"></button>
+			<button pButton pRipple  class="p-button-text text-xl font-bold" style="color:rgb(255, 255, 255)" (click)="toggle(districtadmin)">CREATE DISTRICT ADMIN</button>
 			<!-- <button pButton pRipple  class="p-button-text text-xl font-bold" style="color:red" (click)="toggle1(createdistrictadmin)">CREATE OFFICE BEARERS</button> -->
-			<button pButton pRipple  class="p-button-text text-xl font-bold" style="color:red" (click)="toggle3(home)">OFFICE BEARER CHANGE</button>
+			<button pButton pRipple  class="p-button-text text-xl font-bold" style="color:rgb(255, 255, 255)" (click)="toggle3(home)">OFFICE BEARER CHANGE</button>
 			<div style="padding-left:32px;margin-left: 9px;">
-			<button pButton pRipple  class="p-button-text text-xl font-bold" style="color:red;padding-left: 28px;" [routerLink]="['/']">SIGN OUT</button>
+			<button pButton pRipple  class="p-button-text text-xl font-bold" style="color:rgb(255, 255, 255);padding-left: 28px;" [routerLink]="['/']">SIGN OUT</button>
 			</div>
 
 			<!-- <p-button  label="SIGN OUT"  styleClass="p-button-link text-red-500 text-xl"></p-button> -->
@@ -33,7 +34,7 @@
 	</div>
 </div>
 
-<div  style="background: linear-gradient(#f52003c9,rgb(228, 206, 44), rgb(92, 84, 84) );padding-top: 109px;">
+<div  style="background: linear-gradient(white );padding-top: 109px;">
 	<!-- <div class="flex flex-wrap gap-2" style="margin-left:30px;margin-top:9px;margin-bottom: 5px;padding-left: 300px;">
 			<button pButton pRipple type="button" icon="pi pi-fw pi-home" label="Home" class="p-button-raised" style="background-color:#fa2837" (click)="toggle3(home)"></button>
 				<button pButton pRipple type="button" label="Dashboard" class="p-button-raised" style="background-color:#fa2837"></button>
@@ -43,145 +44,152 @@
 				<button pButton pRipple type="button" label="Sign-in" class="p-button-raised" style="background-color:#fa2837" [routerLink]="['/']"></button>
 	</div> -->
 		<div *ngIf="!dashboard && !home"  style="padding-left:24%;padding-right:3%;">
+            
 			<div class="card">
-				<div>
-					<div style="padding-left: 92%;">
-						<div *ngIf="districtadmin===true">
+            <div>
+					<div>
+						<h5 *ngIf="districtadmin === true" style="font-size:25px;"><b> DISTRICT ADMIN INFORMATION </b></h5>
+						<div *ngIf="districtadmin===true" style="padding-left: 92%;padding-bottom:10px;">
 							<button  pButton type="button" label="Add" (click)="visibleSidebar5 = true" icon="pi pi-plus" class="p-button-primary"></button>
 						</div>
 						<div *ngIf="createdistrictadmin===true">
 							<button  pButton type="button" label="Add" (click)="visibleSidebar4 = true" icon="pi pi-plus" class="p-button-primary"></button>
 						</div>
 					</div>
+                    <div></div>
 
 								<p-sidebar [(visible)]="visibleSidebar5" [fullScreen]="true" [baseZIndex]="10000">
-									<h3 style="font-weight:normal">Create District Admin</h3>
-									<div  class="col-12 md:col-6" style="padding-left:380px">
+                                    <div style="background-image: linear-gradient(#0e24b1, #3e4fa0)">
+                                   <div>
+									<h3 style="font-weight:20px;margin-left:45%;color:white;padding-top:2%">Create District Admin</h3>
+                                </div>
+									<div  class="col-12 md:col-6" style="padding-left:300px">
 										<div class="card p-fluid" style="width:900px">
 											<div class="field grid">
-											<label htmlFor="name3" class="col-12 mb-2 md:col-2 md:mb-0">First Name</label>
+											<label htmlFor="name3" class="col-12 mb-2 md:col-2 md:mb-0">First Name/முதல் பெயர்</label>
 												<div class="col-12 md:col-10">
 													<input pInputText id="name3" type="text" />
 												</div>
 											</div>
 											<div class="field grid">
-												<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Last Name</label>
+												<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Last Name/குடும்ப பெயர்</label>
 												<div class="col-12 md:col-10">
 													<input pInputText id="email3" type="text" />
 												</div>
 											</div>
 											<div class="field grid">
-												<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Designation</label>
+												<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Designation/பதவி</label>
 												<div class="col-12 md:col-10">
 													<input pInputText id="email3" type="text" />
 												</div>
 											</div>
 											<div class="field grid">
-												<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">District</label>
+												<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">District/மாவட்டம்</label>
 												<div class="col-12 md:col-10">
 													<p-dropdown [options]="cities" [(ngModel)]="selectedDrop" placeholder="Select a City" [showClear]="true"></p-dropdown>
 												</div>
 											</div>
 											<div class="field grid">
-												<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Mobile</label>
+												<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Mobile/கைபேசி</label>
 												<div class="col-12 md:col-10">
 													<input pInputText id="email3" type="text" />
 												</div>
 											</div>
 											<div class="field grid">
-												<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Email</label>
+												<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Email/மின்னஞ்சல்</label>
 												<div class="col-12 md:col-10">
 													<input pInputText id="email3" type="text" />
 												</div>
 											</div>
 											<div class="field grid">
-												<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Password</label>
+												<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Password/கடவுச்சொல்</label>
 												<div class="col-12 md:col-10">
 													<input pInputText id="email3" type="text" />
 												</div>
 											</div>
 
 										<div class="field grid">
-												<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Status</label>
+												<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Status/நிலை</label>
 
 												<div class="col-12 md:col-4">
 														<div class="field-radiobutton" style="padding-top: 15px;">
 															<p-radioButton name="city" value="active" [(ngModel)]="valRadio"
 																		id="city2"></p-radioButton>
-															<label for="city2">Active</label>
+															<label for="city2">Active/செயலில்</label>
 														</div>
 														<div class="field-radiobutton">
 															<p-radioButton name="city" value="Inactive" [(ngModel)]="valRadio"
 																		id="city2"></p-radioButton>
-															<label for="city2">Inactive</label>
+															<label for="city2">Inactive/செயலற்றது</label>
 														</div>
 														<div class="flex flex-wrap gap-2">
 															<button pButton pRipple type="button" label="Submit"></button>
 														</div>
 													</div>
-
+                                                   </div>
 												</div>
 											</div>
-										</div>
+                                            </div>
+										
 								</p-sidebar>
-								<p-sidebar [(visible)]="visibleSidebar4" [fullScreen]="true" [baseZIndex]="10000">
-									<h3 style="font-weight:normal">Create Office Bearers</h3>
+								<p-sidebar  [(visible)]="visibleSidebar4" [fullScreen]="true" [baseZIndex]="10000" >
+                                    <h3 style="font-weight:normal">Create Office Bearers</h3>
 											<div class="col-12 md:col-6" style="padding-left:380px">
 												<div class="card p-fluid" style="width:900px">
 													<div class="field grid">
-														<label htmlFor="name3" class="col-12 mb-2 md:col-2 md:mb-0">First Name</label>
+														<label htmlFor="name3" class="col-12 mb-2 md:col-2 md:mb-0">First Name/முதல் பெயர்</label>
 															<div class="col-12 md:col-10">
 																<input pInputText id="name3" type="text" />
 															</div>
 														</div>
 													<div class="field grid">
-														<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Last Name</label>
+														<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Last Name/கடைசி பெயர்</label>
 														<div class="col-12 md:col-10">
 															<input pInputText id="email3" type="text" />
 														</div>
 													</div>
 													<div class="field grid">
-														<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Designation</label>
+														<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Designation/பதவி</label>
 														<div class="col-12 md:col-10">
 															<input pInputText id="email3" type="text" />
 														</div>
 													</div>
 													<div class="field grid">
-														<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Party Designation</label>
+														<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Party Designation/கட்சி பதவி</label>
 														<div class="col-12 md:col-10">
 															<p-dropdown [options]="cities" [(ngModel)]="selectedDrop" placeholder="Select designation" [showClear]="true"></p-dropdown>
 														</div>
 													</div>
 													<div class="field grid">
-														<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Mobile</label>
+														<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Mobile/கைபேசி</label>
 														<div class="col-12 md:col-10">
 															<input pInputText id="email3" type="text" />
 														</div>
 													</div>
 													<div class="field grid">
-														<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Email</label>
+														<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Email/மின்னஞ்சல்</label>
 														<div class="col-12 md:col-10">
 															<input pInputText id="email3" type="text" />
 														</div>
 													</div>
 
 													<div class="field grid">
-														<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Status</label>
+														<label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0">Status/நிலை</label>
 														<div class="col-12 md:col-4">
 																	<div class="field-radiobutton" style="padding-top: 15px;">
 																		<p-radioButton name="city" value="active" [(ngModel)]="valRadio"
 																					id="city2"></p-radioButton>
-																		<label for="city2">Active</label>
+																		<label for="city2">Active/செயலில்</label>
 																	</div>
 																	<div class="field-radiobutton">
 																		<p-radioButton name="city" value="Inactive" [(ngModel)]="valRadio"
 																					id="city2"></p-radioButton>
-																		<label for="city2">Inactive</label>
+																		<label for="city2">Inactive/செயலற்றது</label>
 																	</div>
 																	<div class="field-radiobutton">
 																		<p-radioButton name="city" value="Awaiting approval" [(ngModel)]="valRadio"
 																					id="city2"></p-radioButton>
-																		<label for="city2">Awaiting approval</label>
+																		<label for="city2">Awaiting approval/ஒப்புதலுக்காக காத்திருக்கிறது</label>
 																	</div>
 																	<div>
 																		<button pButton pRipple label="Submit"></button>

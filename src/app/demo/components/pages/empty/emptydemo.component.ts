@@ -19,7 +19,7 @@ export class EmptyDemoComponent {
     selfregistration:boolean=false;
     display: boolean = false;
     home:boolean=false;
-    dashboard:boolean=false;
+    dashboard:boolean=true;
     visibleSidebar5: boolean = false;
 
 
