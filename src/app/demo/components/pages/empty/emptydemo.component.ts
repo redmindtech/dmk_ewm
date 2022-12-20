@@ -21,7 +21,8 @@ export class EmptyDemoComponent {
     home:boolean=false;
     dashboard:boolean=true;
     visibleSidebar5: boolean = false;
-
+    value5: any;
+    
 
     states: any[] = [
         {name: 'Arizona', code: 'Arizona'},
@@ -49,7 +50,7 @@ export class EmptyDemoComponent {
 
     city2: any = null;
     valRadio: string = '';
-
+    
     toggle(a:any){
         this.districtadmin = !this.districtadmin;
         this.createdistrictadmin=false;
