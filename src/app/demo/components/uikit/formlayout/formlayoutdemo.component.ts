@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Product } from 'src/app/demo/api/product';
+import { ProductService } from 'src/app/demo/service/product.service';
+import { LayoutService } from 'src/app/layout/service/app.layout.service';
 
 @Component({
     templateUrl: './formlayoutdemo.component.html'
@@ -56,7 +60,7 @@ export class FormLayoutDemoComponent {
     selfregistration:boolean=false;
     display: boolean = false;
     home:boolean=false;
-    dashboard:boolean=false;
+    dashboard:boolean=true;
     visibleSidebar4: boolean = false;
     visibleSidebar5: boolean = false;
 
@@ -85,11 +89,12 @@ export class FormLayoutDemoComponent {
     valRadio: string = '';
 
     toggle(a:any){
-        this.districtadmin = !this.districtadmin;
+        
         this.createdistrictadmin=false;
         this.selfregistration=false;
         this.home=false;
         this.dashboard=false;
+        return this.districtadmin = true;
        }
     toggle1(a:any){
         this.createdistrictadmin= !this.createdistrictadmin;
@@ -106,32 +111,111 @@ export class FormLayoutDemoComponent {
         this.dashboard=false;
        }
     toggle3(a:any){
-        this.home = !this.home;
+        
         this.districtadmin=false;
         this.createdistrictadmin=false;
         this.selfregistration=false;
         this.dashboard=false;
+        return this.home =true;
     }
 
     toggledashboard(a:any){
-        this.dashboard=!this.dashboard;
+        
         this.home=false;
+        return this.dashboard=true;
 
     }
-    customers:any=[{name:'district1', country:'name1',company:'old.desig1',status:'new.desig1',date:'01/01/2022'},
-    {name:'district2', country:'name2',company:'old.desig2',status:'new.desig2',date:'20/01/2022'},
-    {name:'district3', country:'name3',company:'old.desig3',status:'new.desig3',date:'31/01/2022'}
+    customers:any=[{name:'Salem', country:'Ramesh',company:'old.desig1',status:'new.desig1',date:'01/01/2022',comment:'Reason....'},
+    {name:'Coimbatore', country:'Suresh',company:'old.desig2',status:'new.desig2',date:'20/01/2022',comment:'Reason....'},
+    {name:'Trichy', country:'Vignesh',company:'old.desig3',status:'new.desig3',date:'31/01/2022',comment:'Reason....'}
     ];
 
-    customers1:any=[{name:'name1', country:'country1',company:'abc.ltd',status:'active',date:'01/01/2022'},
-    {name:'name2', country:'country2',company:'cde.ltd',status:'no-active',date:'20/01/2022'},
-    {name:'name3', country:'country2',company:'fgh.ltd',status:'no-active',date:'31/01/2022'}
+    customers1:any=[{name:'Ramesh', country:'country1',company:'abc.ltd',status:'active',date:'01/01/2022'},
+    {name:'Suresh', country:'country2',company:'cde.ltd',status:'no-active',date:'20/01/2022'},
+    {name:'Rajesh', country:'country2',company:'fgh.ltd',status:'no-active',date:'31/01/2022'}
     ];
 
     items = [
         { label: 'Add New', icon: 'pi pi-fw pi-plus' },
         { label: 'Remove', icon: 'pi pi-fw pi-minus' }
     ];
+    chartData: any;
+    chartOptions: any;
+    subscription!: Subscription;
+    products!: Product[];
     
+    constructor(private productService: ProductService, public layoutService: LayoutService) {
+        this.subscription = this.layoutService.configUpdate$.subscribe(() => {
+            this.initChart();
+        });
+    }
+    ngOnInit() {
+        this.initChart();
+        this.productService.getProductsSmall().then(data => this.products = data);
 
+        this.items = [
+            { label: 'Add New', icon: 'pi pi-fw pi-plus' },
+            { label: 'Remove', icon: 'pi pi-fw pi-minus' }
+        ];
+    }
+    
+    initChart() { 
+        const documentStyle = getComputedStyle(document.documentElement);
+        const textColor = documentStyle.getPropertyValue('--text-color');
+        const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
+        const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
+
+        this.chartData = {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            datasets: [
+                {
+                    label: 'First Dataset',
+                    data: [65, 59, 80, 81, 56, 55, 40],
+                    fill: false,
+                    backgroundColor: documentStyle.getPropertyValue('--bluegray-700'),
+                    borderColor: documentStyle.getPropertyValue('--bluegray-700'),
+                    tension: .4
+                },
+                {
+                    label: 'Second Dataset',
+                    data: [28, 48, 40, 19, 86, 27, 90],
+                    fill: false,
+                    backgroundColor: documentStyle.getPropertyValue('--green-600'),
+                    borderColor: documentStyle.getPropertyValue('--green-600'),
+                    tension: .4
+                }
+            ]
+        };
+
+        this.chartOptions = {
+            plugins: {
+                legend: {
+                    labels: {
+                        color: textColor
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: {
+                        color: textColorSecondary
+                    },
+                    grid: {
+                        color: surfaceBorder,
+                        drawBorder: false
+                    }
+                },
+                y: {
+                    ticks: {
+                        color: textColorSecondary
+                    },
+                    grid: {
+                        color: surfaceBorder,
+                        drawBorder: false
+                    }
+                }
+            }
+        };
+
+}
 }
