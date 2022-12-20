@@ -13,13 +13,22 @@
 </div>
 <div style="background-image: linear-gradient(to right, #0e24b1, #0042c6, #005cd8, #0075e8, hsl(208, 93%, 52%));">
 <div class="border-red-800 layout-sidebar " style="margin-top: 20px;padding-right: 50px;background-image: linear-gradient(#0e24b1, white)">
-	<div class="flex flex-column gap-4 justify-content: center;" style="padding-top:40px;padding-left:20px;color:rgb(255, 255, 255)">
+	<!-- <div class="flex flex-column gap-4 justify-content: center;" style="padding-top:40px;padding-left:20px;color:rgb(255, 255, 255)"> -->
+	<div class="flex flex-column gap-4 justify-content:start;" style="padding-top:40px;color:rgb(255, 255, 255)">
 
-		<p class="text-xl font-bold" (click)="toggledashboard(dashboard)">DASHBOARD </p>
+		<!-- <p class="text-xl font-bold" (click)="toggledashboard(dashboard)">DASHBOARD </p> -->
 		<!-- <p class="text-xl font-bold" (click)="toggle(districtadmin)">DISTRICT ADMIN</p> -->
-		<p class="text-xl font-bold" (click)="toggle1(createdistrictadmin)">CREATE OFFICE BEARERS</p>
+		<!-- <p class="text-xl font-bold" (click)="toggle1(createdistrictadmin)">CREATE OFFICE BEARERS</p> -->
 		<!-- <p class="text-xl  font-bold" (click)="toggle2(selfregistration)">SELF-REGISTRATION</p> -->
-		<p class="text-xl font-bold" [routerLink]="['/']">SIGN-OUT</p>
+		<!-- <p class="text-xl font-bold" [routerLink]="['/']">SIGN-OUT</p> -->
+
+
+		<button pButton pRipple label="DASHBOARD"  class="p-button-text text-xl font-bold" style="color:rgb(248, 241, 241)" 
+			(click)="toggledashboard(dashboard)"></button>
+		<button pButton pRipple  class="p-button-text text-xl font-bold" style="color:rgb(245, 240, 240)" 
+			(click)="toggle1(createdistrictadmin)">CREATE OFFICE BEARERS</button>
+		<button pButton pRipple  class="p-button-text text-xl font-bold" style="color:rgb(247, 240, 240);padding-left:30%;" 
+			[routerLink]="['/']">SIGN OUT</button>
 
 	</div>
 </div>
@@ -30,7 +39,15 @@
 	</div>
 </div>
 
+<div *ngIf="createdistrictadmin"  class="card" style="padding-left:50%;padding-right:3%;">
+	<div>
+		<h5 *ngIf="createdistrictadmin == true" style="font-size:25px;"><b> DISTRICT ADMIN INFORMATION </b></h5>
+		<div *ngIf="createdistrictadmin==true" style="padding-left: 92%;padding-bottom:10px;">
+			<button  pButton type="button" label="Add" (click)="visibleSidebar5 = true" icon="pi pi-plus" class="p-button-primary"></button>
+		</div>
+	</div>
 
+</div>
 
 
 	<!-- <div *ngIf="districtadmin" class="col-12 md:col-6" style="padding-left:380px">
@@ -247,98 +264,101 @@
 	</div> -->
 <!-- </div> -->
 <div *ngIf="dashboard">
-    <div class="grid" style="margin-left:23%;margin-top:2%;">
-        <div class="col-12 lg:col-6 xl:col-3">
-            <div class="card mb-0">
-                <div class="flex justify-content-between mb-3">
-                    <div>
-                        <span class="block text-500 font-medium mb-3">Orders</span>
-                        <div class="text-900 font-medium text-xl">152</div>
-                    </div>
-                    <div class="flex align-items-center justify-content-center bg-blue-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
-                        <i class="pi pi-shopping-cart text-blue-500 text-xl"></i>
-                    </div>
-                </div>
-                <span class="text-green-500 font-medium">24 new </span>
-                <span class="text-500">since last visit</span>
-            </div>
-        </div>
-        <div class="col-12 lg:col-6 xl:col-3">
-            <div class="card mb-0">
-                <div class="flex justify-content-between mb-3">
-                    <div>
-                        <span class="block text-500 font-medium mb-3">Revenue</span>
-                        <div class="text-900 font-medium text-xl">$2.100</div>
-                    </div>
-                    <div class="flex align-items-center justify-content-center bg-orange-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
-                        <i class="pi pi-map-marker text-orange-500 text-xl"></i>
-                    </div>
-                </div>
-                <span class="text-green-500 font-medium">%52+ </span>
-                <span class="text-500">since last week</span>
-            </div>
-        </div>
-        <div class="col-12 lg:col-6 xl:col-3">
-            <div class="card mb-0">
-                <div class="flex justify-content-between mb-3">
-                    <div>
-                        <span class="block text-500 font-medium mb-3">Customers</span>
-                        <div class="text-900 font-medium text-xl">28441</div>
-                    </div>
-                    <div class="flex align-items-center justify-content-center bg-cyan-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
-                        <i class="pi pi-inbox text-cyan-500 text-xl"></i>
-                    </div>
-                </div>
-                <span class="text-green-500 font-medium">520  </span>
-                <span class="text-500">newly registered</span>
-            </div>
-        </div>
+	<div class="grid" style="margin-left:23%;margin-top:2%;">
+		<div class="col-12 lg:col-6 xl:col-3">
+			<div class="card mb-0">
+				<div class="flex justify-content-between mb-3">
+					<div>
+						<span class="block text-500 font-medium mb-3">Registered Office Bearers</span>
+						<div class="text-900 font-medium text-xl">152</div>
+					</div>
+					<div class="flex align-items-center justify-content-center bg-blue-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+						<i class="pi pi-inbox text-cyan-500 text-xl"></i>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<div class="col-12 lg:col-6 xl:col-3">
+			<div class="card mb-0">
+				<div class="flex justify-content-between mb-3">
+					<div>
+						<span class="block text-500 font-medium mb-3">Approved Office Bearers</span>
+						<div class="text-900 font-medium text-xl">100</div>
+					</div>
+					<div class="flex align-items-center justify-content-center bg-orange-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+						<i class="pi pi-inbox text-cyan-500 text-xl"></i>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<div class="col-12 lg:col-6 xl:col-3">
+			<div class="card mb-0">
+				<div class="flex justify-content-between mb-3">
+					<div>
+						<span class="block text-500 font-medium mb-3">Active Office Bearers</span>
+						<div class="text-900 font-medium text-xl">100</div>
+					</div>
+					<div class="flex align-items-center justify-content-center bg-cyan-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+						<i class="pi pi-inbox text-cyan-500 text-xl"></i>
+					</div>
+				</div>
+				
+			</div>
+		</div>
 
-        <div class="card">
-            <div class="flex align-items-center justify-content-between mb-4">
-                <h5>Notifications</h5>
-                <div>
-                    <button pButton type="button" icon="pi pi-ellipsis-v" class="p-button-rounded p-button-text p-button-plain" (click)="toggle5($event)"></button>
+		<div class="card">
+			<div class="flex align-items-center justify-content-between mb-4">
+				<h5>Notifications</h5>
+				<div>
+					<button pButton type="button" icon="pi pi-ellipsis-v" class="p-button-rounded p-button-text p-button-plain" (click)="menu.toggle($event)"></button>
+					<p-menu #menu [popup]="true" [model]="items"></p-menu>
+				</div>
+			</div>
 
-                </div>
-            </div>
+			<span class="block text-600 font-medium mb-3">TODAY</span>
+			<ul class="p-0 mx-0 mt-0 mb-4 list-none">
+				<li class="flex align-items-center py-2 border-bottom-1 surface-border">
+					<div class="w-3rem h-3rem flex align-items-center justify-content-center bg-blue-100 border-circle mr-3 flex-shrink-0">
+						<i class="pi  text-xl text-blue-500"></i>
+					</div>
+					<span class="text-900 line-height-3">Meeting
+				<span class="text-700"> Schedule on 21-Decemeber-2022 </span>
+			</span>
+				</li>
+				<li class="flex align-items-center py-2">
+					<div class="w-3rem h-3rem flex align-items-center justify-content-center bg-orange-100 border-circle mr-3 flex-shrink-0">
+						<i class="pi  text-xl text-orange-500"></i>
+					</div>
+					<span class="text-700 line-height-3">Pending Approval For Bearers has been initiated.</span>
+				</li>
+			</ul>
 
-            <span class="block text-600 font-medium mb-3">TODAY</span>
-            <ul class="p-0 mx-0 mt-0 mb-4 list-none">
-                <li class="flex align-items-center py-2 border-bottom-1 surface-border">
-                    <div class="w-3rem h-3rem flex align-items-center justify-content-center bg-blue-100 border-circle mr-3 flex-shrink-0">
-                        <i class="pi pi-dollar text-xl text-blue-500"></i>
-                    </div>
-                    <span class="text-900 line-height-3">Richard Jones
-                <span class="text-700"> has purchased a blue t-shirt for <span class="text-blue-500">79$</span></span>
-            </span>
-                </li>
-                <li class="flex align-items-center py-2">
-                    <div class="w-3rem h-3rem flex align-items-center justify-content-center bg-orange-100 border-circle mr-3 flex-shrink-0">
-                        <i class="pi pi-download text-xl text-orange-500"></i>
-                    </div>
-                    <span class="text-700 line-height-3">Your request for withdrawal of <span class="text-blue-500 font-medium">2500$</span> has been initiated.</span>
-                </li>
-            </ul>
+			<span class="block text-600 font-medium mb-3">YESTERDAY</span>
+			<ul class="p-0 m-0 list-none">
+				<li class="flex align-items-center py-2 border-bottom-1 surface-border">
+					<div class="w-3rem h-3rem flex align-items-center justify-content-center bg-blue-100 border-circle mr-3 flex-shrink-0">
+						<i class="pi  text-xl text-blue-500"></i>
+					</div>
+					<span class="text-900 line-height-3">Application Submission Last Date
+				<span class="text-700"> Announcement - <span class="text-blue-500">22-Dec-2022</span></span>
+			</span>
+				</li>
+			   
+			</ul>
+		</div>
+		
+		<div class="col-12 xl:col-6">
+			<div class="card">
+				<h5>Office Bearer Registration Overview</h5>
+				<p-chart type="line" [data]="chartData" [options]="chartOptions"></p-chart>
+			</div>
 
-            <span class="block text-600 font-medium mb-3">YESTERDAY</span>
-            <ul class="p-0 m-0 list-none">
-                <li class="flex align-items-center py-2 border-bottom-1 surface-border">
-                    <div class="w-3rem h-3rem flex align-items-center justify-content-center bg-blue-100 border-circle mr-3 flex-shrink-0">
-                        <i class="pi pi-dollar text-xl text-blue-500"></i>
-                    </div>
-                    <span class="text-900 line-height-3">Keyser Wick
-                <span class="text-700"> has purchased a black jacket for <span class="text-blue-500">59$</span></span>
-            </span>
-                </li>
-                <li class="flex align-items-center py-2 border-bottom-1 surface-border">
-                    <div class="w-3rem h-3rem flex align-items-center justify-content-center bg-pink-100 border-circle mr-3 flex-shrink-0">
-                        <i class="pi pi-question text-xl text-pink-500"></i>
-                    </div>
-                    <span class="text-900 line-height-3">Jane Davis<span class="text-700"> has posted a new questions about your product.</span></span>
-                </li>
-            </ul>
-        </div>
+			
+	</div>
+
+</div>
 
 
 
