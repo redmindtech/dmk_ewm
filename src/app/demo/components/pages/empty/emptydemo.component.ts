@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
 export class EmptyDemoComponent {
     selectedState: any = null;
     cities:any[] = [
-      
+
     ];
     selectedDrop:any = { value: '' };
     districtadmin:boolean=false;
@@ -15,6 +15,7 @@ export class EmptyDemoComponent {
     selfregistration:boolean=false;
     display: boolean = false;
     home:boolean=false;
+    dashboard:boolean=false;
 
 
     states: any[] = [
@@ -29,6 +30,10 @@ export class EmptyDemoComponent {
         { name: 'Option 1', code: 'Option 1' },
         { name: 'Option 2', code: 'Option 2' },
         { name: 'Option 3', code: 'Option 3' }
+    ];
+    items = [
+        { label: 'Add New', icon: 'pi pi-fw pi-plus' },
+        { label: 'Remove', icon: 'pi pi-fw pi-minus' }
     ];
 
     cities1: any[] = [];
@@ -46,11 +51,15 @@ export class EmptyDemoComponent {
         this.selfregistration=false;
         this.home=false;
        }
+
     toggle1(a:any){
         this.createdistrictadmin= !this.createdistrictadmin;
         this.districtadmin=false;
         this.selfregistration=false;
         this.home=false;
+        this.dashboard=false;
+       
+
        }
     toggle2(a:any){
         this.selfregistration = !this.selfregistration;
@@ -62,5 +71,19 @@ export class EmptyDemoComponent {
         this.home = !this.home;
 
     }
+    toggledashboard(a:any){
+        this.dashboard=!this.dashboard;
+        this.home=false;
+        this.createdistrictadmin=false;
+        return this.dashboard=true;
+
 
  }
+ toggle5(a:any){
+    this.districtadmin = !this.districtadmin;
+    this.createdistrictadmin=false;
+    this.selfregistration=false;
+    this.home=false;
+    this.dashboard=false;
+}
+}
