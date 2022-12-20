@@ -91,6 +91,13 @@ export class EmptyDemoComponent {
     this.dashboard=false;
 }
 
+customers1:any=[{name:'Ramesh', country:'Secretary',company:'Namakkal',status:'Active',date:'ramesh@mail.com'},
+    {name:'Suresh', country:'District Secretary',company:'Erode',status:'Non-active',date:'suresh@yahoomail.com'},
+    {name:'Rajesh', country:'Secretary',company:'Salem',status:'Non-active',date:'rajeshsh08@email.com'},
+    {name:'Dinesh', country:'District Secretary',company:'Madurai',status:'Active',date:'dinesh2022@mail.com'},
+    {name:'Vijay Kumar', country:'District Secretary',company:'Thirunelveli',status:'Non-active',date:'vijayk11@gmail.com'},
+    ];
+
 
 chartData: any;
 chartOptions: any;
