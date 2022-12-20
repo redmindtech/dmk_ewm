@@ -16,6 +16,11 @@ import { InputTextModule } from "primeng/inputtext";
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { ImageModule } from 'primeng/image';
 import { DialogModule } from 'primeng/dialog';
+import { TableModule } from 'primeng/table';
+import { SidebarModule } from 'primeng/sidebar';
+import { ChartModule } from 'primeng/chart';
+import { StyleClassModule } from 'primeng/styleclass';
+import { MenuModule } from 'primeng/menu';
 
 
 @NgModule({
@@ -35,7 +40,12 @@ import { DialogModule } from 'primeng/dialog';
 		InputTextModule,
 		RadioButtonModule,
 		ImageModule,
-		DialogModule
+		DialogModule,
+		TableModule,
+		SidebarModule,
+		ChartModule,
+		StyleClassModule,
+		MenuModule
     ],
     declarations: [EmptyDemoComponent]
 })
