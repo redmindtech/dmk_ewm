@@ -125,14 +125,22 @@ export class FormLayoutDemoComponent {
         return this.dashboard=true;
 
     }
-    customers:any=[{name:'Salem', country:'Ramesh',company:'old.desig1',status:'new.desig1',date:'01/01/2022',comment:'Reason....'},
-    {name:'Coimbatore', country:'Suresh',company:'old.desig2',status:'new.desig2',date:'20/01/2022',comment:'Reason....'},
-    {name:'Trichy', country:'Vignesh',company:'old.desig3',status:'new.desig3',date:'31/01/2022',comment:'Reason....'}
+    customers:any=[{name:'Salem', country:'Ramesh',company:'Secretary',status:'District Secretary',date:'01/01/2022',comment:'Reason....'},
+    {name:'Coimbatore', country:'Suresh',company:'Secretary',status:'District Secretary',date:'20/01/2022',comment:'Reason....'},
+    {name:'Trichy', country:'Vignesh',company:'District Secretary',status:'Secretary',date:'31/01/2022',comment:'Reason....'},
+    {name:'Perambalur', country:'Boopathi',company:'Secretary',status:'District Secretary',date:'14/04/2022',comment:'Reason....'},
+    {name:'Chennai', country:'Mohan',company:'Secretary',status:'District Secretary',date:'30/01/2022',comment:'Reason....'},
+    {name:'Namakkal', country:'Raju',company:'Secretary',status:'District Secretary',date:'14/01/2022',comment:'Reason....'},
+    {name:'Ariyalur', country:'kalaiyarasan',company:'Secretary',status:'District Secretary',date:'09/01/2022',comment:'Reason....'}
     ];
 
-    customers1:any=[{name:'Ramesh', country:'country1',company:'abc.ltd',status:'active',date:'01/01/2022'},
-    {name:'Suresh', country:'country2',company:'cde.ltd',status:'no-active',date:'20/01/2022'},
-    {name:'Rajesh', country:'country2',company:'fgh.ltd',status:'no-active',date:'31/01/2022'}
+    customers1:any=[{name:'Ramesh', country:'District Secretary',company:'Salem',status:'Active',date:'ramesh34@gmail.com'},
+    {name:'Suresh', country:'District Secretary',company:'Coimbatore',status:'No-Active',date:'suresh2.KgK@gmail.com'},
+    {name:'Rajesh', country:'District Secretary',company:'Trichy',status:'Active',date:'rajesh.0508@gmail.com'},
+    {name:'Boopathi', country:'Secretary',company:'Perambalur',status:'Active',date:'boopathi839@gmail.com'},
+    {name:'kalaiyarasan', country:'District Secretary',company:'Ariyalur',status:'Active',date:'kalaiyarasan5734@gmail.com'},
+    {name:'Raju', country:'Secretary',company:'Namakkal',status:'No-Active',date:'raja.kg@gmail.com'},
+    {name:'Malleswaran', country:'District Secretary',company:'Perambalur',status:'No-Active',date:'chinni.malleswaran@gmail.com'}
     ];
 
     items = [
@@ -149,6 +157,7 @@ export class FormLayoutDemoComponent {
             this.initChart();
         });
     }
+    // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
     ngOnInit() {
         this.initChart();
         this.productService.getProductsSmall().then(data => this.products = data);
