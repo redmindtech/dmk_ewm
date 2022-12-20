@@ -21,9 +21,9 @@
 
 			<button pButton pRipple label="DASHBOARD"  class="p-button-text text-xl font-bold" style="color:red" (click)="toggledashboard(dashboard)"></button>
 			<button pButton pRipple  class="p-button-text text-xl font-bold" style="color:red" (click)="toggle(districtadmin)">CREATE DISTRICT ADMIN</button>
-			<button pButton pRipple  class="p-button-text text-xl font-bold" style="color:red" (click)="toggle1(createdistrictadmin)">CREATE OFFICE BEARERS</button>
+			<!-- <button pButton pRipple  class="p-button-text text-xl font-bold" style="color:red" (click)="toggle1(createdistrictadmin)">CREATE OFFICE BEARERS</button> -->
 			<button pButton pRipple  class="p-button-text text-xl font-bold" style="color:red" (click)="toggle3(home)">OFFICE BEARER CHANGE</button>
-			<div style="padding-left:32px;margin-left: 2px;">
+			<div style="padding-left:32px;margin-left: 9px;">
 			<button pButton pRipple  class="p-button-text text-xl font-bold" style="color:red;padding-left: 28px;" [routerLink]="['/']">SIGN OUT</button>
 			</div>
 			
@@ -44,8 +44,9 @@
 		<div *ngIf="!dashboard && !home"  style="padding-left:24%;padding-right:3%;">
 			<div class="card">
 				<div>
-					<div style="padding-left: 92%;">
-						<div *ngIf="districtadmin==true">
+					<div>
+						<h5 *ngIf="districtadmin == true" style="font-size:25px;"><b> DISTRICT ADMIN INFORMATION </b></h5>
+						<div *ngIf="districtadmin==true" style="padding-left: 92%;padding-bottom:10px;">
 							<button  pButton type="button" label="Add" (click)="visibleSidebar5 = true" icon="pi pi-plus" class="p-button-primary"></button>
 						</div>
 						<div *ngIf="createdistrictadmin==true">
@@ -193,56 +194,57 @@
 								</p-sidebar>
 				</div>	
 						<div>
-							<h5 *ngIf="districtadmin == true">DISTRICT ADMIN INFORMATION</h5>
 							<h5 *ngIf="createdistrictadmin == true">OFFICE BEARER INFORMATION</h5>
-							<p-table [value]="customers1" rowGroupMode="subheader" groupRowsBy="representative.name" sortField="representative.name" sortMode="single"  responsiveLayout="scroll" [scrollable]="true" scrollHeight="400px">
-								<ng-template pTemplate="header">
-									<tr>
-										<th>NAME</th>
-										<th>DESIGNATION</th>
-										<th>DISTRICT</th>
-										<th>STATUS</th>
-										<th>EMAIL</th>
-										<th>SHOW</th>
-										<th>EDIT</th>
-										<th>DELETE</th>
-									</tr>
-								</ng-template>
-								<ng-template pTemplate="body" let-customer let-rowIndex="rowIndex">
-									<!-- <tr pRowGroupHeader *ngIf="rowGroupMetadata[customer.representative.name].index === rowIndex">
-										<td colspan="5" style="min-width: 200px;">
-											<img [alt]="customer.representative.name" src="assets/demo/images/avatar/{{customer.representative.image}}" width="32" style="vertical-align: middle" />
-											<span class="font-bold ml-2">{{customer.representative.name}}</span>
-										</td>
-									</tr> -->
-									<tr>
-										<td style="min-width: 20px;">
-											{{customer.name}}
-										</td>
-										<td style="min-width: 20px;">
-											<span >{{customer.country}}</span>
-										</td>
-										<td style="min-width: 20px;">
-											{{customer.company}}
-										</td>
-										<td style="min-width: 20px;">
-											<span>{{customer.status}}</span>
-										</td>
-										<td style="min-width: 20px;">
-											{{customer.date}}
-										</td>
-										<td style="min-width: 20px;">
-											<button pButton class="p-button-success" icon="pi pi-eye"></button>
-										</td>
-										<td style="min-width: 20px;">
-											<button pButton icon="pi pi-user-edit"></button>
-										</td>
-										<td style="min-width: 20px;">
-											<button pButton icon="pi pi-times" class="p-button-danger"></button>
-										</td>
-									</tr>
-								</ng-template>
-							</p-table>
+							<div *ngIf="districtadmin == true || createdistrictadmin == true">
+									<p-table [value]="customers1" rowGroupMode="subheader" groupRowsBy="representative.name" sortField="representative.name" sortMode="single"  responsiveLayout="scroll" [scrollable]="true" scrollHeight="400px">
+										<ng-template pTemplate="header">
+											<tr>
+												<th>Name</th>
+												<th>Designation</th>
+												<th>District</th>
+												<th>Status</th>
+												<th>Email</th>
+												<th>Show</th>
+												<th>Edit</th>
+												<th>Delete</th>
+											</tr>
+										</ng-template>
+										<ng-template pTemplate="body" let-customer let-rowIndex="rowIndex">
+											<!-- <tr pRowGroupHeader *ngIf="rowGroupMetadata[customer.representative.name].index === rowIndex">
+												<td colspan="5" style="min-width: 200px;">
+													<img [alt]="customer.representative.name" src="assets/demo/images/avatar/{{customer.representative.image}}" width="32" style="vertical-align: middle" />
+													<span class="font-bold ml-2">{{customer.representative.name}}</span>
+												</td>
+											</tr> -->
+											<tr>
+												<td style="min-width: 20px;">
+													{{customer.name}}
+												</td>
+												<td style="min-width: 20px;">
+													<span >{{customer.country}}</span>
+												</td>
+												<td style="min-width: 20px;">
+													{{customer.company}}
+												</td>
+												<td style="min-width: 20px;">
+													<span>{{customer.status}}</span>
+												</td>
+												<td style="min-width: 20px;">
+													{{customer.date}}
+												</td>
+												<td style="min-width: 20px;">
+													<button pButton class="p-button-success" icon="pi pi-eye"></button>
+												</td>
+												<td style="min-width: 20px;">
+													<button pButton icon="pi pi-user-edit"></button>
+												</td>
+												<td style="min-width: 20px;">
+													<button pButton icon="pi pi-times" class="p-button-danger"></button>
+												</td>
+											</tr>
+										</ng-template>
+									</p-table>
+								</div>
 
 						</div>	
 				</div>
@@ -264,21 +266,21 @@
 				<!-- <div class="flex justify-content-end flex-wrap card-container green-container" >
 					<p-button label="Add" icon="pi pi-plus" ></p-button>
 				</div>	 -->
-				<h5 style="padding-top:2%">OFFICE BEARER CHANGE</h5>
+				<h5 style="padding-top:2%" style="font-size:25px;"><b> OFFICE BEARER CHANGE </b></h5>
 						
-					<div style="padding-top:3%">
+					<div style="padding-top:2%">
 						<p-table [value]="customers" rowGroupMode="subheader" groupRowsBy="representative.name" sortField="representative.name" sortMode="single"  responsiveLayout="scroll" 
 						[scrollable]="true" scrollHeight="400px" >
 							<ng-template pTemplate="header">
 								<tr>
-									<th>DISTRICT</th>
-									<th>OFFICE BEARER NAME</th>
-									<th>OLD DESIGNATION</th>
-									<th>NEW DESIGNATION</th>
-									<th>REQUEST DATE</th>
-									<th>COMMENTS</th>
-									<th>APPROVE</th>
-									<th>REJECT</th>
+									<th>District</th>
+									<th>Office Bearer Name</th>
+									<th>Old Designation</th>
+									<th>New Designation</th>
+									<th>Request Date</th>
+									<th>Comments</th>
+									<th>Approve</th>
+									<th>Reject</th>
 								</tr>
 							</ng-template>
 							<ng-template pTemplate="body" let-customer let-rowIndex="rowIndex">
@@ -305,7 +307,7 @@
 										{{customer.date}}
 									</td>
 									<td style="min-width: 20px;">
-										
+										{{customer.comment}}
 									</td>
 									<td style="min-width: 20px;">
 										<button pButton class="p-button-success" icon="pi pi-check"></button>
@@ -559,103 +561,101 @@
 </div>
 
 <div *ngIf="dashboard">
-		<div class="grid" style="margin-left:23%;margin-top:2%;">
-			<div class="col-12 lg:col-6 xl:col-3">
-				<div class="card mb-0">
-					<div class="flex justify-content-between mb-3">
-						<div>
-							<span class="block text-500 font-medium mb-3">Orders</span>
-							<div class="text-900 font-medium text-xl">152</div>
-						</div>
-						<div class="flex align-items-center justify-content-center bg-blue-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
-							<i class="pi pi-shopping-cart text-blue-500 text-xl"></i>
-						</div>
+	<div class="grid" style="margin-left:23%;margin-top:2%;">
+		<div class="col-12 lg:col-6 xl:col-3">
+			<div class="card mb-0">
+				<div class="flex justify-content-between mb-3">
+					<div>
+						<span class="block text-500 font-medium mb-3">Registered Office Bearers</span>
+						<div class="text-900 font-medium text-xl">152</div>
 					</div>
-					<span class="text-green-500 font-medium">24 new </span>
-					<span class="text-500">since last visit</span>
+					<div class="flex align-items-center justify-content-center bg-blue-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+						<i class="pi pi-inbox text-cyan-500 text-xl"></i>
+					</div>
 				</div>
+				
 			</div>
-			<div class="col-12 lg:col-6 xl:col-3">
-				<div class="card mb-0">
-					<div class="flex justify-content-between mb-3">
-						<div>
-							<span class="block text-500 font-medium mb-3">Revenue</span>
-							<div class="text-900 font-medium text-xl">$2.100</div>
-						</div>
-						<div class="flex align-items-center justify-content-center bg-orange-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
-							<i class="pi pi-map-marker text-orange-500 text-xl"></i>
-						</div>
+		</div>
+		<div class="col-12 lg:col-6 xl:col-3">
+			<div class="card mb-0">
+				<div class="flex justify-content-between mb-3">
+					<div>
+						<span class="block text-500 font-medium mb-3">Approved Office Bearers</span>
+						<div class="text-900 font-medium text-xl">100</div>
 					</div>
-					<span class="text-green-500 font-medium">%52+ </span>
-					<span class="text-500">since last week</span>
+					<div class="flex align-items-center justify-content-center bg-orange-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+						<i class="pi pi-inbox text-cyan-500 text-xl"></i>
+					</div>
 				</div>
+				
 			</div>
-			<div class="col-12 lg:col-6 xl:col-3">
-				<div class="card mb-0">
-					<div class="flex justify-content-between mb-3">
-						<div>
-							<span class="block text-500 font-medium mb-3">Customers</span>
-							<div class="text-900 font-medium text-xl">28441</div>
-						</div>
-						<div class="flex align-items-center justify-content-center bg-cyan-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
-							<i class="pi pi-inbox text-cyan-500 text-xl"></i>
-						</div>
+		</div>
+		<div class="col-12 lg:col-6 xl:col-3">
+			<div class="card mb-0">
+				<div class="flex justify-content-between mb-3">
+					<div>
+						<span class="block text-500 font-medium mb-3">Active Office Bearers</span>
+						<div class="text-900 font-medium text-xl">100</div>
 					</div>
-					<span class="text-green-500 font-medium">520  </span>
-					<span class="text-500">newly registered</span>
+					<div class="flex align-items-center justify-content-center bg-cyan-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+						<i class="pi pi-inbox text-cyan-500 text-xl"></i>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="flex align-items-center justify-content-between mb-4">
+				<h5>Notifications</h5>
+				<div>
+					<button pButton type="button" icon="pi pi-ellipsis-v" class="p-button-rounded p-button-text p-button-plain" (click)="menu.toggle($event)"></button>
+					<p-menu #menu [popup]="true" [model]="items"></p-menu>
 				</div>
 			</div>
 
+			<span class="block text-600 font-medium mb-3">TODAY</span>
+			<ul class="p-0 mx-0 mt-0 mb-4 list-none">
+				<li class="flex align-items-center py-2 border-bottom-1 surface-border">
+					<div class="w-3rem h-3rem flex align-items-center justify-content-center bg-blue-100 border-circle mr-3 flex-shrink-0">
+						<i class="pi  text-xl text-blue-500"></i>
+					</div>
+					<span class="text-900 line-height-3">Meeting
+				<span class="text-700"> Schedule on 21-Decemeber-2022 </span>
+			</span>
+				</li>
+				<li class="flex align-items-center py-2">
+					<div class="w-3rem h-3rem flex align-items-center justify-content-center bg-orange-100 border-circle mr-3 flex-shrink-0">
+						<i class="pi  text-xl text-orange-500"></i>
+					</div>
+					<span class="text-700 line-height-3">Pending Approval For Bearers has been initiated.</span>
+				</li>
+			</ul>
+
+			<span class="block text-600 font-medium mb-3">YESTERDAY</span>
+			<ul class="p-0 m-0 list-none">
+				<li class="flex align-items-center py-2 border-bottom-1 surface-border">
+					<div class="w-3rem h-3rem flex align-items-center justify-content-center bg-blue-100 border-circle mr-3 flex-shrink-0">
+						<i class="pi  text-xl text-blue-500"></i>
+					</div>
+					<span class="text-900 line-height-3">Application Submission Last Date
+				<span class="text-700"> Announcement - <span class="text-blue-500">22-Dec-2022</span></span>
+			</span>
+				</li>
+			   
+			</ul>
+		</div>
+		
+		<div class="col-12 xl:col-6">
 			<div class="card">
-                <div class="flex align-items-center justify-content-between mb-4">
-                    <h5>Notifications</h5>
-                    <div>
-                        <button pButton type="button" icon="pi pi-ellipsis-v" class="p-button-rounded p-button-text p-button-plain" (click)="menu.toggle($event)"></button>
-                        <p-menu #menu [popup]="true" [model]="items"></p-menu>
-                    </div>
-                </div>
+				<h5>Office Bearer Registration Overview</h5>
+				<p-chart type="line" [data]="chartData" [options]="chartOptions"></p-chart>
+			</div>
 
-                <span class="block text-600 font-medium mb-3">TODAY</span>
-                <ul class="p-0 mx-0 mt-0 mb-4 list-none">
-                    <li class="flex align-items-center py-2 border-bottom-1 surface-border">
-                        <div class="w-3rem h-3rem flex align-items-center justify-content-center bg-blue-100 border-circle mr-3 flex-shrink-0">
-                            <i class="pi pi-dollar text-xl text-blue-500"></i>
-                        </div>
-                        <span class="text-900 line-height-3">Richard Jones
-                    <span class="text-700"> has purchased a blue t-shirt for <span class="text-blue-500">79$</span></span>
-                </span>
-                    </li>
-                    <li class="flex align-items-center py-2">
-                        <div class="w-3rem h-3rem flex align-items-center justify-content-center bg-orange-100 border-circle mr-3 flex-shrink-0">
-                            <i class="pi pi-download text-xl text-orange-500"></i>
-                        </div>
-                        <span class="text-700 line-height-3">Your request for withdrawal of <span class="text-blue-500 font-medium">2500$</span> has been initiated.</span>
-                    </li>
-                </ul>
-
-                <span class="block text-600 font-medium mb-3">YESTERDAY</span>
-                <ul class="p-0 m-0 list-none">
-                    <li class="flex align-items-center py-2 border-bottom-1 surface-border">
-                        <div class="w-3rem h-3rem flex align-items-center justify-content-center bg-blue-100 border-circle mr-3 flex-shrink-0">
-                            <i class="pi pi-dollar text-xl text-blue-500"></i>
-                        </div>
-                        <span class="text-900 line-height-3">Keyser Wick
-                    <span class="text-700"> has purchased a black jacket for <span class="text-blue-500">59$</span></span>
-                </span>
-                    </li>
-                    <li class="flex align-items-center py-2 border-bottom-1 surface-border">
-                        <div class="w-3rem h-3rem flex align-items-center justify-content-center bg-pink-100 border-circle mr-3 flex-shrink-0">
-                            <i class="pi pi-question text-xl text-pink-500"></i>
-                        </div>
-                        <span class="text-900 line-height-3">Jane Davis<span class="text-700"> has posted a new questions about your product.</span></span>
-                    </li>
-                </ul>
-            </div>
 			
-
+	</div>
 
 </div>
-
 
 
 
