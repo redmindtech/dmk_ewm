@@ -17,13 +17,14 @@
                  <form [formGroup]="userForm" (ngSubmit)="con()">
                     <div>
 
-                                <div class="field p-fluid">
+                                <div class="field p-fluid flex flex-column">
                                     <h5 for="email">Email</h5>
-                                    <input type="text" id="email" #input name="email" (keyup)="conlog(input.value)"  formControlName="email" autocomplete="off" placeholder="Email address" pInputText class="w-full md:w-30rem mb-5" style="padding:1rem">
-                                    <!-- <small *ngIf="userForm.value.email.valid">Enter your username to reset your password.</small > -->
+                                    <input type="text" id="email" #input name="email" (keyup)="conlog(input.value)"  formControlName="email" autocomplete="off" placeholder="Email address" pInputText class="w-full md:w-30rem" style="padding:1rem">
+                                    <small *ngIf="validuser" style="color:red">Enter valid username.</small >
+                                    
                                 </div>
-
-                                <label for="password"  class="block text-900 font-medium text-xl mb-2">Password</label>
+                                
+                                <label for="password"  class="block text-900 font-medium text-xl mb-2" style="margin-top:6%">Password</label>
                                 <p-password  id="password" name="password" formControlName="password" autocomplete="off" placeholder="Password" [toggleMask]="true" styleClass="mb-5" inputStyleClass="w-full p-3 md:w-30rem"></p-password>
 
                                 <div class="flex align-items-center justify-content-between mb-5 gap-5">
@@ -36,21 +37,15 @@
                                     </div>
                                 </div>
                                  
-                                   <!-- <button *ngIf="usertype=='';else elseBlock" pButton pRipple label="Sign In" class="w-full p-3 text-xl" ></button> -->
+                                   
 
-                                   <button *ngIf="usertype=='';else elseBlock" pButton pRipple label="Sign In" class="w-full p-3 text-xl" ></button>
+                                   <button *ngIf= "usertype!='superadmin' && usertype!='admin';else elseBlock" pButton pRipple label="Sign In" (click)="helptext()" class="w-full p-3 text-xl" ></button>
                                    
                                     <ng-template #elseBlock>
                                             <button *ngIf="usertype=='admin'" pButton pRipple label="Sign In"  class="w-full p-3 text-xl" [routerLink]="['/pages/empty']"></button>
                                             <button *ngIf="usertype=='superadmin'" pButton pRipple label="Sign In"  class="w-full p-3 text-xl" [routerLink]="['/uikit/formlayout']" ></button>
-                                        
-                                        <ng-template #elseBlock>
-                                            <button *ngIf="usertype !='';else elseBlock" pButton pRipple label="Sign In" class="w-full p-3 text-xl" ></button>
-                                        </ng-template>
-                                    </ng-template>
-                                    <!-- <ng-template #thenBlock>
-                                        <button *ngIf="usertype=='superadmin'" pButton pRipple label="Sign In"  class="w-full p-3 text-xl" [routerLink]="['/uikit/formlayout']" ></button>
-                                    </ng-template> -->
+                                    </ng-template> 
+                                    
                                     
                                  
                         </div>

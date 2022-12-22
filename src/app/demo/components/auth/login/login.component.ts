@@ -45,6 +45,13 @@ export class LoginComponent implements OnInit{
         this.usertype =a;
         console.log(a);
     }
+    validuser:boolean=false;
+    helptext(){
+        if(this.usertype !='admin' && this.usertype != 'superadmin'){
+            this.validuser=true;
+        }
+        console.log(this.validuser);
+    }
 
     constructor(public layoutService: LayoutService,
         private EncrDecr:EncrDecrServiceService) { }
