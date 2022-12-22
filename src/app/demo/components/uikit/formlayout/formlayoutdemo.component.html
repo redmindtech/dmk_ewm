@@ -12,9 +12,9 @@
 		<button pButton pRipple type="button" label="Create Office Bearers" class="p-button-raised" (click)="toggle1(createdistrictadmin)" style="background-color:#fa2837"></button>
 		<button pButton pRipple type="button" label="Self-Registration" class="p-button-raised" (click)="toggle2(selfregistration)" style="background-color:#fa2837"></button>
 		<button pButton pRipple type="button" label="Sign-in" class="p-button-raised" style="background-color:#fa2837" [routerLink]="['/']"></button> -->
-		
+
 			<!-- <p
-			<!-- <p app-menuitem class="text-xl font-bold" (click)="toggledashboard(dashboard)" >SUPER ADMIN - DASHBOARD</p>
+		 <p app-menuitem class="text-xl font-bold" (click)="toggledashboard(dashboard)" >SUPER ADMIN - DASHBOARD</p>
 			<p class="text-xl font-bold" (click)="toggle(districtadmin)">CREATE DISTRICT ADMIN</p>
 			<p class="text-xl font-bold" (click)="toggle1(createdistrictadmin)">CREATE OFFICE BEARERS</p> -->
 			<!-- <p class="text-xl  font-bold" (click)="toggle2(selfregistration)">SELF-REGISTRATION</p> -->
@@ -44,7 +44,7 @@
 				<button pButton pRipple type="button" label="Sign-in" class="p-button-raised" style="background-color:#fa2837" [routerLink]="['/']"></button>
 	</div> -->
 		<div *ngIf="!dashboard && !home"  style="padding-left:24%;padding-right:3%;">
-            
+
 			<div class="card">
             <div>
 					<div>
@@ -130,7 +130,7 @@
 												</div>
 											</div>
                                             </div>
-										
+
 								</p-sidebar>
 								<p-sidebar  [(visible)]="visibleSidebar4" [fullScreen]="true" [baseZIndex]="10000" >
                                     <h3 style="font-weight:normal">Create Office Bearers</h3>
@@ -202,8 +202,8 @@
 								</p-sidebar>
 				</div>
 						<div>
-							<h5 *ngIf="createdistrictadmin == true">OFFICE BEARER INFORMATION</h5>
-							<div *ngIf="districtadmin == true || createdistrictadmin == true">
+							<h5 *ngIf="createdistrictadmin === true">OFFICE BEARER INFORMATION</h5>
+							<div *ngIf="districtadmin === true || createdistrictadmin === true">
 									<p-table [value]="customers1" rowGroupMode="subheader" groupRowsBy="representative.name" sortField="representative.name" sortMode="single"  responsiveLayout="scroll" [scrollable]="true" scrollHeight="400px">
 										<ng-template pTemplate="header">
 											<tr>
@@ -275,9 +275,9 @@
 					<p-button label="Add" icon="pi pi-plus" ></p-button>
 				</div>	 -->
 				<h5 style="padding-top:2%" style="font-size:25px;"><b> OFFICE BEARER CHANGE </b></h5>
-						
+
 					<div style="padding-top:2%">
-						<p-table [value]="customers" rowGroupMode="subheader" groupRowsBy="representative.name" sortField="representative.name" sortMode="single"  responsiveLayout="scroll" 
+						<p-table [value]="customers" rowGroupMode="subheader" groupRowsBy="representative.name" sortField="representative.name" sortMode="single"  responsiveLayout="scroll"
 						[scrollable]="true" scrollHeight="400px" >
 							<ng-template pTemplate="header">
 								<tr>
@@ -581,7 +581,7 @@
 						<i class="pi pi-inbox text-cyan-500 text-xl"></i>
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 		<div class="col-12 lg:col-6 xl:col-3">
@@ -595,7 +595,7 @@
 						<i class="pi pi-inbox text-cyan-500 text-xl"></i>
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 		<div class="col-12 lg:col-6 xl:col-3">
@@ -609,7 +609,7 @@
 						<i class="pi pi-inbox text-cyan-500 text-xl"></i>
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 
@@ -650,17 +650,17 @@
 				<span class="text-700"> Announcement - <span class="text-blue-500">22-Dec-2022</span></span>
 			</span>
 				</li>
-			   
+
 			</ul>
 		</div>
-		
+
 		<div class="col-12 xl:col-6">
 			<div class="card">
 				<h5>Office Bearer Registration Overview</h5>
 				<p-chart type="line" [data]="chartData" [options]="chartOptions"></p-chart>
 			</div>
 
-			
+
 	</div>
 
 </div>

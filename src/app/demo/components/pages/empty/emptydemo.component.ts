@@ -22,7 +22,8 @@ export class EmptyDemoComponent {
     dashboard:boolean=true;
     visibleSidebar5: boolean = false;
     value5: any;
-    
+    visibleSidebar6: boolean =false;
+
 
     states: any[] = [
         {name: 'Arizona', code: 'Arizona'},
@@ -50,7 +51,7 @@ export class EmptyDemoComponent {
 
     city2: any = null;
     valRadio: string = '';
-    
+
     toggle(a:any){
         this.districtadmin = !this.districtadmin;
         this.createdistrictadmin=false;
@@ -110,6 +111,7 @@ constructor(private productService: ProductService, public layoutService: Layout
         this.initChart();
     });
 }
+// eslint-disable-next-line @angular-eslint/use-lifecycle-interface
 ngOnInit() {
     this.initChart();
     this.productService.getProductsSmall().then(data => this.products = data);
@@ -120,7 +122,7 @@ ngOnInit() {
     ];
 }
 
-initChart() { 
+initChart() {
     const documentStyle = getComputedStyle(document.documentElement);
     const textColor = documentStyle.getPropertyValue('--text-color');
     const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
